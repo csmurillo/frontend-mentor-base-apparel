@@ -1,9 +1,10 @@
 import Head from 'next/head'
 import React,{useState} from 'react';
+import Image from 'next/image';
 import * as EmailValidator from 'email-validator';
 
 export default function Home() {
-  const [email,setEmail]=useState('');
+  const [email,setEmail]=useState("");
   const [error,setError]=useState(false);
 
   const emailForm = event =>{
@@ -11,7 +12,6 @@ export default function Home() {
     const isValidEmail=EmailValidator.validate(email);
     if(!isValidEmail){
       setError(true);
-      console.log('invalid');
     }
   };
   const emailOnChange = event =>{
@@ -28,39 +28,39 @@ export default function Home() {
       </Head>
       <main id="main">
         <div id="logo-container">
-          <img src="/images/logo.svg"/>
+          <Image width={158} height={33} alt="logo" src="/images/logo.svg"/>
         </div>
-        <div id="mobile-image-container">
-          <img id="mobile-image" src="/images/hero-mobile.jpg"/>
+        <div id="mobile-image-container" style={{width:"100%",height:"100%",minHeight:"235px",position:"relative"}}>
+          <Image layout="fill" alt="hero mobile image" id="mobile-image" src="/images/hero-mobile.jpg"/>
         </div>
         <section>
           <div id="coming-soon-container">
-            <div id="coming-soon"><span>We're</span><br/> coming<br/> soon</div>
+            <div id="coming-soon"><span>We`&#39;`re</span><br/> coming<br/> soon</div>
           </div>
           <div id="content-container">
             <p id="content">
-            Hello fellow shoppers! We're currently building our new fashion store. 
+            Hello fellow shoppers! We`&#39;`re currently building our new fashion store. 
           Add your email below to stay up-to-date with announcements and our launch deals.
             </p>
           </div>
           <div id="form-container">
             <form id="form" onSubmit={emailForm} noValidate>
               <input id="input-email" className={error?"error-red-border":""} name="email" type="email" placeholder="Email Address" value={email} onChange={emailOnChange}/>
-              <div id="error-container" className={error?"error show":"hide"}> <img src="/images/icon-error.svg"/> </div>
-              <button id="btn" type="submit"><img src="/images/icon-arrow.svg"/></button>
+              <div id="error-container" className={error?"error show":"hide"}> <Image width={24} height={24} alt="error" src="/images/icon-error.svg"/> </div>
+              <button id="btn" type="submit"><Image width={12} height={20} alt="arrow" src="/images/icon-arrow.svg"/></button>
             </form>
             <div id="error-msg" className={error?"show":"hide"}>Please provide a valid email</div>
           </div>
         </section>
         <footer>
           <p className="attribution">
-            Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+            Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
             Coded by <a href="#">Angel Murillo</a>.
           </p>
         </footer>
       </main>
-      <div id="image-container">
-        <img id="image" src="/images/hero-desktop.jpg"/>
+      <div id="image-container" style={{width:"100%",height:"100%",minWidth:"595px",position:"relative"}}>
+        <Image layout="fill" alt="hero desktop image" id="image" src="/images/hero-desktop.jpg"/>
       </div>
     </div>
   )
